@@ -38,6 +38,7 @@ export default function Products(props) {
       callback_url: props.CALLBACK_URL
     },{
       headers: {
+        'Access-Control-Allow-Origin': '*',
         Authorization: `Bearer ${props.PAYSTACK_SK}`,
         Content: 'application/json'
       }
