@@ -18,7 +18,7 @@ const plans = [
     price: 250
   },
   {
-    name: 'Enterprise',
+    name: 'Enterprise', 
     ram: '32GB',
     cpus: '12 CPUs',
     disk: '1024 GB SSD disk',
@@ -26,34 +26,27 @@ const plans = [
   },
 ]
 
-const PAYSTACK_PK=process.env.REACT_APP_PAYSTACK_PK
-const PAYSTACK_SK=process.env.REACT_APP_PAYSTACK_SK
-
-const BASE_URL = "https://api.paystack.co/";
-const INITIALIZE_URL = `${BASE_URL}transaction/initialize`;
-const VERIFY_URL = `${BASE_URL}transaction/verify`;
-const CALLBACK_URL = "http://localhost:3000";
-
-export default function Products() {
+export default function Products(props) {
   const [selected, setSelected] = useState(plans[0])
 
   function checkout()
   {
     const amount = (selected.price * 100);
-    axios.post(INITIALIZE_URL, {
+    axios.post(props.INITIALIZE_URL, {
       email: 'demo@email.com',
       amount,
-      callback_url: CALLBACK_URL
+      callback_url: props.CALLBACK_URL
     },{
       headers: {
-        Authorization: `Bearer ${PAYSTACK_SK}`,
+        Authorization: `Bearer ${props.PAYSTACK_SK}`,
         Content: 'application/json'
       }
     }).then((response) => {
       let data = response.data.data;
       window.location.href = data.authorization_url;
     }).catch((error) => {
-      alert(error)
+      console.log(error)
+      alert('something went wrong, try again later')
     })
   }
 
