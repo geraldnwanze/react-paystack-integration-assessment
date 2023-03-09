@@ -39,8 +39,8 @@ export default function Products(props) {
     },{
       headers: {
         'Access-Control-Allow-Origin': '*',
-        Authorization: `Bearer ${props.PAYSTACK_SK}`,
-        Content: 'application/json'
+        'Authorization': `Bearer ${props.PAYSTACK_SK}`,
+        'Content-Type': 'application/json'
       }
     }).then((response) => {
       let data = response.data.data;

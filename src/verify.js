@@ -13,6 +13,7 @@ export default function Verify(props)
 
     axios.get(props.VERIFY_URL + ref , {
         headers: {
+            'Access-Control-Allow-Origin': '*',
             'Authorization': `Bearer ${props.PAYSTACK_SK}`,
             'Content-Type': 'application/json'
         }
