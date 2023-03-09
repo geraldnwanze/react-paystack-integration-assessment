@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PIA",
+  "name": "Paystack Integration Assessment",
   "icons": [
     {
       "src": "favicon.ico",
