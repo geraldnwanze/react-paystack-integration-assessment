@@ -29,10 +29,10 @@ const plans = [
 export default function Products(props) {
   const [selected, setSelected] = useState(plans[0])
 
-  function checkout()
+  async function checkout()
   {
     const amount = (selected.price * 100);
-    axios.post(props.INITIALIZE_URL, {
+    await axios.post(props.INITIALIZE_URL, {
       email: 'demo@email.com',
       amount,
       callback_url: props.CALLBACK_URL
